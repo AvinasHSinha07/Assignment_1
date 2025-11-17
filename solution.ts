@@ -33,3 +33,20 @@ class Person {
   }
 }
 
+type Item = {
+  title: string;
+  rating: number;
+};
+
+function filterByRating(items: Item[]): Item[] {
+  return items.filter((item) => {
+    if (item.rating < 0 || item.rating > 5) {
+      throw new Error(
+        `Invalid rating for "${item.title}": ${item.rating}. Must be between 0 and 5.`
+      );
+    }
+    return item.rating >= 4;
+  });
+}
+
+
