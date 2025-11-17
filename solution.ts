@@ -104,3 +104,26 @@ function calculateTotalPrice(products: Product[]): number {
 
   return finalTotal;
 }
+
+function getUniqueValues(
+  arr1: (number | string)[],
+  arr2: (number | string)[]
+): (number | string)[] {
+  const combinedArray = [...arr1, ...arr2];
+  const uniqueArray: (number | string)[] = [];
+
+  for (let i = 0; i < combinedArray.length; i++) {
+    let isDuplicate = false;
+    for (let j = 0; j < uniqueArray.length; j++) {
+      if (combinedArray[i] === uniqueArray[j]) {
+        isDuplicate = true;
+        break;
+      }
+    }
+    if (!isDuplicate) {
+      uniqueArray[uniqueArray.length] = combinedArray[i];
+    }
+  }
+
+  return uniqueArray;
+}
